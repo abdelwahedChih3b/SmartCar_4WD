@@ -30,8 +30,7 @@ int forward = 0;
 
 int isright =1;
 int isleft =1 ;
-int isforward = 0;
-//0 for black and 1 for white
+int isforward = 0 ; //0 for black and 1 for white
 
 //Setup for Wheel Motors
 
@@ -100,7 +99,7 @@ void loop() {
  
 
   if (p_command == 'F') {
-    go(); // Turn LED OFF
+    go(); // advance
     Serial.println("go"); // Send back, to the phone
     p_command = "";
   }

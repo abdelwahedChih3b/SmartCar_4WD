@@ -1,10 +1,11 @@
-void setup() 
-{
-Serial.begin(9600); // activates Serial Communication
-}
+#include <SR04.h>
 
-void loop() 
-{
-Serial.print(digitalRead(8)); // Line Tracking sensor is connected with pin 8 of the Arduino
-delay(500);
+#define trig_pin 13   //trig at pin 13
+#define echo_pin 12 //echo at pin 12
+SR04 sr04 = SR04(echo_pin,trig_pin);
+int distance =0 ;  //variable pour stocker la distance
+void loop(){
+distance  = sr04.Distance();
+Serial.println(distance);
+delay(500)
 }
