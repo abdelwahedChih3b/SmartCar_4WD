@@ -87,33 +87,36 @@ void loop() {
     p_command = Serial.read();
  
 
- if (p_command == 'F') {
-  go(); // Turn LED OFF
-  Serial.println("go"); // Send back, to the phone
-  p_command = NULL;
- }
- else if (p_command == 'B') {
-  reverse();
-  Serial.println("reverse");
-  p_command = NULL;
- } 
- else if (p_command == 'R') {
-  right();
-  Serial.println("right");
-  p_command = NULL;
- }
-  else if (p_command == 'L') {
-  left();
-  Serial.println("left");
-  p_command = NULL;
- }
- else if (p_command == 'S') {
-  stop();
-  Serial.println("left");
-  p_command = NULL;
- }
- delay(100);
- }
+  if (p_command == 'F') {
+    go(); // Turn LED OFF
+    Serial.println("go"); // Send back, to the phone
+    p_command = "";
+  }
+  else if (p_command == 'B') {
+    reverse();
+    Serial.println("reverse");
+    p_command = "";
+  } 
+  else if (p_command == 'R') {
+    right();
+    Serial.println("right");
+    p_command = "";
+  }
+    else if (p_command == 'L') {
+    left();
+    Serial.println("left");
+    p_command = "";
+  }
+  else if (p_command == 'S') {
+    stop();
+    Serial.println("Stop");
+    p_command = "";
+  }
+    delay(100);
+    }
+
+
+
  else if (p_command == 'Z') {
   myservo.write(90); //set servo at 90 angle 
   delay(100);
@@ -125,7 +128,7 @@ void loop() {
     stop();
     delay(500);
     reverse();
-    delay(20);
+    delay(5);
 
     myservo.write(10);
     delay(500);
@@ -159,7 +162,7 @@ void loop() {
         else
         {
           reverse();
-          delay(15);
+          delay(5);
         }
         
       }
