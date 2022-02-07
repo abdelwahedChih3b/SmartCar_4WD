@@ -22,6 +22,17 @@ int leftDis = 0;
 int rightDis = 0;
 int forward = 0;
 
+//setup for line follower
+
+#define R 8;
+#define M 9;
+#define L 10 ;
+
+int isright =1;
+int isleft =1 ;
+int isforward = 0;
+//0 for black and 1 for white
+
 //Setup for Wheel Motors
 
 
@@ -30,6 +41,7 @@ int forward = 0;
 
 #define in3 4
 #define in4 2
+
 
 void go() {
   digitalWrite(in1, HIGH);
@@ -174,5 +186,44 @@ void loop() {
   else{
     go();
   }}
+  else if (p_command == "K")
+  {
+    isforward =digitalRead(9);
+    isright =digitalRead(8);
+    isleft = digitalRead(10);
+    if (isforward == 0 and (isright+isleft) == 2)
+    {
+      go();
+    }
+    else if (isright == 0 and (isleft+isforward) >= 1)
+    {
+      while (isforward != 0)
+      {
+        left();
+        delay(2);
+        stop();
+      }
+      
+    }
+    else if (isleft == 0 and (isright+isforward)>= 1)
+    {
+      while (isforward != 0)
+      {
+        right();
+        delay(2);
+        stop();
+      }
+      
+    }
+    else
+    {
+      go();
+    }
+    
+    
+    
+
+  }
+  
   
 }
